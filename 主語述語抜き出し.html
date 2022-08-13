@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>主語述語抜き出しページ</title>
+    <script>
+	function OnButtonClick(){
+	//格納する変数の宣言
+	let element = document.getElementById("original").value;
+	element = element.split('。');
+	var med = [];
+	//配列を全てループ+処理して、変数medに入れる。
+	for (const elem of element) {
+		if (elem.length > 30) {
+			var elem1 = elem.slice(0, 9);
+			var elem2 = elem.slice(-20);
+			var medium = elem1 + '■　■' + elem2 + '。' + '<br>';
+			med.push(medium);
+		}else{
+			;
+		}
+	};
+	//抜き出した文章を出力する
+	target = document.getElementById('output');
+	target.innerHTML = med;
+	}
+    </script>  
+  </head>
+  <body>
+<textarea id="original" rows= "35" cols="75"></textarea>
+<br>
+<input type="button" value="主語述語抜き出し" onclick="OnButtonClick();">
+<div id="output"></div>
+
+  </body>
+</html>
